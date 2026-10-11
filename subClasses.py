@@ -12,12 +12,25 @@ class Employee:
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_amount)
 
+    def __repr__(self):
+        return "Employee('{}', '{}', '{}')".format(self.first, self.last, self.pay)
+    
+    def __str__(self):
+        return '{} - {}'.format(self.fullname(), self.email)
+
+    def __add__(self, other):
+         return self.pay + other.pay
+
+    def __len__(self):
+         return len(self.fullname())
+
 class Developer(Employee):
     raise_amount = 1.10
 
     def __init__(self, first, last, pay, prog_lang):
         super().__init__(first, last, pay)
         self.prog_lang = prog_lang
+
 
 class Manager(Employee):
     
@@ -45,16 +58,26 @@ dev_2 = Developer('Test', 'User', 60000, 'JavaScript')
 
 mgr_1 = Manager('Sue', 'Smith', 40000, [dev_1])
 
-print(mgr_1.email)
+print(len(dev_1))
 
-print(isinstance(mgr_1, Manager))
-print(isinstance(mgr_1, Employee))
-print(isinstance(mgr_1, Developer))
+# print(dev_1 + dev_2)
 
-print(issubclass(Manager, Employee))
-print(issubclass(Developer, Employee))
-print(issubclass(Manager, Developer))
-print(issubclass(Developer, Manager))
+# print(repr(dev_1))
+# print(str(dev_1))
+
+# print(dev_1.__repr__())
+# print(dev_1.__str__())
+
+# print(mgr_1.email)
+
+# print(isinstance(mgr_1, Manager))
+# print(isinstance(mgr_1, Employee))
+# print(isinstance(mgr_1, Developer))
+
+# print(issubclass(Manager, Employee))
+# print(issubclass(Developer, Employee))
+# print(issubclass(Manager, Developer))
+# print(issubclass(Developer, Manager))
 # mgr_1.add_emp(dev_2)
 # mgr_1.remove_emp(dev_1)
 
