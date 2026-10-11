@@ -47,10 +47,18 @@ mgr_1 = Manager('Sue', 'Smith', 40000, [dev_1])
 
 print(mgr_1.email)
 
-mgr_1.add_emp(dev_2)
-mgr_1.remove_emp(dev_1)
+print(isinstance(mgr_1, Manager))
+print(isinstance(mgr_1, Employee))
+print(isinstance(mgr_1, Developer))
 
-mgr_1.print_emps()
+print(issubclass(Manager, Employee))
+print(issubclass(Developer, Employee))
+print(issubclass(Manager, Developer))
+print(issubclass(Developer, Manager))
+# mgr_1.add_emp(dev_2)
+# mgr_1.remove_emp(dev_1)
+
+# mgr_1.print_emps()
 
 # print(dev_1.email)
 # print(dev_1.prog_lang)
